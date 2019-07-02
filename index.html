@@ -141,6 +141,105 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-02T07:58:17.000Z">2019-07-02</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 123 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/02/编程的疑难/">编程的疑难</a>
+            
+        </h1>
+        <div class="content">
+            <ul>
+<li>程序突然卡住，不按照顺序执行，然后过了一会儿结束了，可能是开辟内存太多，爆了，程序提前结束。</li>
+<li>结构体内不能开辟太多的空间，不然会爆。</li>
+<li>main函数最后可以控制返回值，程序正常运行之后会得到预期的返回值，如果返回值不同说明程序提前结束（可能是运行时错误）了。</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-28T15:20:28.000Z">2019-06-28</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 207 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/28/模拟退火算法/">模拟退火算法</a>
+            
+        </h1>
+        <div class="content">
+            <p>通常求最优解问题,贪心思路</p>
+<p>主要参数：</p>
+<ul>
+<li>温度：T</li>
+<li>降温系数：D（每次以固定的比率降温）</li>
+<li>温度下限：eps（到达温度下限就停止）</li>
+<li>当前解：tx（若出现更优的结果，当前解更新，或者在一定接受度的情况下接受波动后的解）</li>
+<li>最优解：当结果出现更优的情况时要更新最优解</li>
+<li>解的变动值：$\Delta$x(由当前温度T和一定的随机波动决定)</li>
+<li>结果：目标（当有更好的结果时更新）</li>
+<li>当前解的函数值与波动解的函数值之差：F（tx）-F（tx+$\Delta$x）</li>
+<li>接受度：<br>$e^{(-(F(X_{new})-F(X_{old}))/T)}$&gt;(long double)rand()/RAND_MAX 就接受</li>
+<li></li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-25T08:42:02.000Z">2019-06-25</time>
                 
                 
@@ -281,7 +380,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        4
                     </p>
                 </div>
             </div>
@@ -427,6 +526,44 @@
         
         <article class="media">
             
+            <a href="/2019/07/02/编程的疑难/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="编程的疑难">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-02T07:58:17.000Z">2019-07-02</time></div>
+                    <a href="/2019/07/02/编程的疑难/" class="has-link-black-ter is-size-6">编程的疑难</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/28/模拟退火算法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="模拟退火算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-28T15:20:28.000Z">2019-06-28</time></div>
+                    <a href="/2019/06/28/模拟退火算法/" class="has-link-black-ter is-size-6">模拟退火算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/06/25/数据结构复习/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="数据结构复习">
@@ -476,12 +613,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/06/">
                 <span class="level-start">
                     <span class="level-item">六月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -528,6 +676,44 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/02/编程的疑难/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="编程的疑难">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-02T07:58:17.000Z">2019-07-02</time></div>
+                    <a href="/2019/07/02/编程的疑难/" class="has-link-black-ter is-size-6">编程的疑难</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/28/模拟退火算法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="模拟退火算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-28T15:20:28.000Z">2019-06-28</time></div>
+                    <a href="/2019/06/28/模拟退火算法/" class="has-link-black-ter is-size-6">模拟退火算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -580,12 +766,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/06/">
                 <span class="level-start">
                     <span class="level-item">六月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
