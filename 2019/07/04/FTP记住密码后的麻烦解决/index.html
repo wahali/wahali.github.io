@@ -2,19 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>归档: 2019/7 - peterpan的博客</title>
+<title>FTP记住密码后的麻烦解决 - peterpan的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="peterpan的博客">
-<meta property="og:url" content="https://www.peterpan666.com/archives/2019/07/index.html">
+    <meta name="description" content="转载自我自己之前CSDN的博客在大一的时候我学校里计算机相关的老师会让我们在ftp服务器上下载作业，我才开始接触ftp服务器。在一次使用时点击了保存密码的选项，之后的登陆就变得很不愉快了。因为记住密码的原因，每次登陆ftp服务器，都会自动进入之前保存的那个用户，无法在同一个服务器上其他的账户上下载东西，也就是当时不知道如何切换到那个服务器上的其他账户。 在网上查阅了近2个小时的方法，才找到了能够解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FTP记住密码后的麻烦解决">
+<meta property="og:url" content="https://www.peterpan666.com/2019/07/04/FTP记住密码后的麻烦解决/index.html">
 <meta property="og:site_name" content="peterpan的博客">
+<meta property="og:description" content="转载自我自己之前CSDN的博客在大一的时候我学校里计算机相关的老师会让我们在ftp服务器上下载作业，我才开始接触ftp服务器。在一次使用时点击了保存密码的选项，之后的登陆就变得很不愉快了。因为记住密码的原因，每次登陆ftp服务器，都会自动进入之前保存的那个用户，无法在同一个服务器上其他的账户上下载东西，也就是当时不知道如何切换到那个服务器上的其他账户。 在网上查阅了近2个小时的方法，才找到了能够解">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.peterpan666.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-04T07:12:22.197Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="peterpan的博客">
+<meta name="twitter:title" content="FTP记住密码后的麻烦解决">
+<meta name="twitter:description" content="转载自我自己之前CSDN的博客在大一的时候我学校里计算机相关的老师会让我们在ftp服务器上下载作业，我才开始接触ftp服务器。在一次使用时点击了保存密码的选项，之后的登陆就变得很不愉快了。因为记住密码的原因，每次登陆ftp服务器，都会自动进入之前保存的那个用户，无法在同一个服务器上其他的账户上下载东西，也就是当时不知道如何切换到那个服务器上的其他账户。 在网上查阅了近2个小时的方法，才找到了能够解">
 <meta name="twitter:image" content="https://www.peterpan666.com/images/og_image.png">
 
 
@@ -89,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="peterpan的博客" height="28">
+                <img src="/images/logo.png" alt="FTP记住密码后的麻烦解决" height="28">
             
             </a>
         </div>
@@ -112,6 +116,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -125,96 +133,113 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-04T07:08:59.000Z">2019-07-04</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                FTP记住密码后的麻烦解决
+            
+        </h1>
+        <div class="content">
+            <p>转载自我自己之前<a href="https://blog.csdn.net/qq_40655345/article/details/84146214" target="_blank" rel="noopener">CSDN的博客</a><br>在大一的时候我学校里计算机相关的老师会让我们在ftp服务器上下载作业，我才开始接触ftp服务器。在一次使用时点击了保存密码的选项，之后的登陆就变得很不愉快了。因为记住密码的原因，每次登陆ftp服务器，都会自动进入之前保存的那个用户，无法在同一个服务器上其他的账户上下载东西，也就是当时不知道如何切换到那个服务器上的其他账户。</p>
+<p>在网上查阅了近2个小时的方法，才找到了能够解决这个问题的办法，也就是一个登陆ftp服务器的万用方法。</p>
+<pre><code>ftp://用户名:密码@地址</code></pre><p>通过这个方式就可以在已保存密码的情况下，登陆其他的用户了。</p>
+<p>希望能帮助到那些萌新小白新生，希望能让那些急于寻找解决办法的人，不要像我那样浪费了很多时间。</p>
 
-<div class="card widget">
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        七月 2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-04T07:08:59.000Z">2019-07-04</time>
-                        <a href="/2019/07/04/FTP记住密码后的麻烦解决/" class="has-link-black-ter is-size-6">FTP记住密码后的麻烦解决</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.JPG" alt="支付宝"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-04T03:13:03.000Z">2019-07-04</time>
-                        <a href="/2019/07/04/二分图/" class="has-link-black-ter is-size-6">二分图</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-03T03:00:50.000Z">2019-07-03</time>
-                        <a href="/2019/07/03/Ubuntu/" class="has-link-black-ter is-size-6">Ubuntu</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.JPG" alt="微信"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-02T15:45:17.000Z">2019-07-02</time>
-                        <a href="/2019/07/02/iracus主题个性化配置/" class="has-link-black-ter is-size-6">iracus主题个性化配置</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-02T07:58:17.000Z">2019-07-02</time>
-                        <a href="/2019/07/02/编程的疑难/" class="has-link-black-ter is-size-6">编程的疑难</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/04/二分图/">
+                <span class="level-item">二分图</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
 </div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'JA7G0e8j3239G9KftxfkvMRI-gzGzoHsz',
+        app_key: 'mvTlUFiR83p0V1EL6mtYMqbf',
+        placeholder: '多来留言啊~'
+    });
+</script>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/zooming.js"></script>
+<!-- 图片放大功能 --></div>
                 
 
 
@@ -308,6 +333,17 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -627,7 +663,7 @@
                 <div class="level-start has-text-centered-mobile">
                     <a class="footer-logo is-block has-mb-6" href="/">
                     
-                        <img src="/images/logo.png" alt="peterpan的博客" height="28">
+                        <img src="/images/logo.png" alt="FTP记住密码后的麻烦解决" height="28">
                     
                     </a>
                     <p class="is-size-15">

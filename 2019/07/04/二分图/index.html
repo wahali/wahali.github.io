@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="基本概念无向图G的二分图的充分必要条件：   1G至少有两个点；对于G中每条回路长度得是偶数。  匹配 1对于G的一个子图M，M的边集中任何两条边都不依附于同一个点，则称这个边集是一个匹配，匹配的数量由边数决定。(可以理解左右两堆点，一一匹配，左边的点只能跟右边的一个点匹配)">
+    <meta name="description" content="基本概念无向图G的二分图的充分必要条件：   1G至少有两个点；对于G中每条回路长度得是偶数。  匹配 1对于G的一个子图M，M的边集中任何两条边都不依附于同一个点，则称这个边集是一个匹配，匹配的数量由边数决定。(可以理解左右两堆点，一一匹配，左边的点只能跟右边的一个点匹配)  完美匹配 1匹配中所有顶点都是匹配的点。  交替路 1从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边形成的路径。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二分图">
 <meta property="og:url" content="https://www.peterpan666.com/2019/07/04/二分图/index.html">
 <meta property="og:site_name" content="peterpan的博客">
-<meta property="og:description" content="基本概念无向图G的二分图的充分必要条件：   1G至少有两个点；对于G中每条回路长度得是偶数。  匹配 1对于G的一个子图M，M的边集中任何两条边都不依附于同一个点，则称这个边集是一个匹配，匹配的数量由边数决定。(可以理解左右两堆点，一一匹配，左边的点只能跟右边的一个点匹配)">
+<meta property="og:description" content="基本概念无向图G的二分图的充分必要条件：   1G至少有两个点；对于G中每条回路长度得是偶数。  匹配 1对于G的一个子图M，M的边集中任何两条边都不依附于同一个点，则称这个边集是一个匹配，匹配的数量由边数决定。(可以理解左右两堆点，一一匹配，左边的点只能跟右边的一个点匹配)  完美匹配 1匹配中所有顶点都是匹配的点。  交替路 1从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边形成的路径。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.peterpan666.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-04T04:04:13.909Z">
+<meta property="og:updated_time" content="2019-07-05T08:27:48.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二分图">
-<meta name="twitter:description" content="基本概念无向图G的二分图的充分必要条件：   1G至少有两个点；对于G中每条回路长度得是偶数。  匹配 1对于G的一个子图M，M的边集中任何两条边都不依附于同一个点，则称这个边集是一个匹配，匹配的数量由边数决定。(可以理解左右两堆点，一一匹配，左边的点只能跟右边的一个点匹配)">
+<meta name="twitter:description" content="基本概念无向图G的二分图的充分必要条件：   1G至少有两个点；对于G中每条回路长度得是偶数。  匹配 1对于G的一个子图M，M的边集中任何两条边都不依附于同一个点，则称这个边集是一个匹配，匹配的数量由边数决定。(可以理解左右两堆点，一一匹配，左边的点只能跟右边的一个点匹配)  完美匹配 1匹配中所有顶点都是匹配的点。  交替路 1从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边形成的路径。">
 <meta name="twitter:image" content="https://www.peterpan666.com/images/og_image.png">
 
 
@@ -158,6 +158,16 @@
 <p>匹配</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于G的一个子图M，M的边集中任何两条边都不依附于同一个点，则称这个边集是一个匹配，匹配的数量由边数决定。(可以理解左右两堆点，一一匹配，左边的点只能跟右边的一个点匹配)</span><br></pre></td></tr></table></figure>
 
+<p>完美匹配</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">匹配中所有顶点都是匹配的点。</span><br></pre></td></tr></table></figure>
+
+<p>交替路</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边形成的路径。</span><br></pre></td></tr></table></figure>
+
+<p>增广路</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从一个未匹配点出发，走交替路，途经另一位匹配点，这段路成为增广路，即未匹配边未匹配边加一。</span><br></pre></td></tr></table></figure>
+
+<h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><p>通过增广路不断“反色”求解最大匹配的问题。</p>
 
         </div>
         
@@ -205,6 +215,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/04/FTP记住密码后的麻烦解决/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">FTP记住密码后的麻烦解决</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -284,7 +301,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        7
                     </p>
                 </div>
             </div>
@@ -345,6 +362,10 @@
         <a class="is-flex" href="#基本概念">
         <span class="has-mr-6">1</span>
         <span>基本概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#匈牙利算法">
+        <span class="has-mr-6">2</span>
+        <span>匈牙利算法</span>
         </a></li></ul>
         </div>
     </div>
@@ -389,6 +410,19 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-04T07:08:59.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/FTP记住密码后的麻烦解决/" class="has-link-black-ter is-size-6">FTP记住密码后的麻烦解决</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -442,19 +476,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-28T15:20:28.000Z">2019-06-28</time></div>
-                    <a href="/2019/06/28/模拟退火算法/" class="has-link-black-ter is-size-6">模拟退火算法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -473,7 +494,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -536,6 +557,19 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-04T07:08:59.000Z">2019-07-04</time></div>
+                    <a href="/2019/07/04/FTP记住密码后的麻烦解决/" class="has-link-black-ter is-size-6">FTP记住密码后的麻烦解决</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-04T03:13:03.000Z">2019-07-04</time></div>
                     <a href="/2019/07/04/二分图/" class="has-link-black-ter is-size-6">二分图</a>
                     <p class="is-size-7 is-uppercase">
@@ -584,19 +618,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-28T15:20:28.000Z">2019-06-28</time></div>
-                    <a href="/2019/06/28/模拟退火算法/" class="has-link-black-ter is-size-6">模拟退火算法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -615,7 +636,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
