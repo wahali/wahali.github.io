@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.peterpan666.com/"/>
-  <updated>2019-07-04T07:12:22.197Z</updated>
+  <updated>2019-07-09T11:34:25.023Z</updated>
   <id>https://www.peterpan666.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>并查集</title>
+    <link href="https://www.peterpan666.com/2019/07/09/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    <id>https://www.peterpan666.com/2019/07/09/并查集/</id>
+    <published>2019-07-09T11:32:58.000Z</published>
+    <updated>2019-07-09T11:34:25.023Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.luogu.org/problemnew/show/P1196" target="_blank" rel="noopener">P1196 [NOI2002]银河英雄传说</a></p><p>代码先附上，题解过两天补。</p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int MAXN = 3e4+5;</span><br><span class="line"></span><br><span class="line">int head[MAXN],size[MAXN],dis[MAXN];</span><br><span class="line"></span><br><span class="line">int find(int x)&#123;</span><br><span class="line">if(head[x]==x)return head[x];</span><br><span class="line">int k = head[x];</span><br><span class="line">head[x] = find(head[x]);</span><br><span class="line">dis[x] += dis[k];</span><br><span class="line">return head[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void UNION(int a,int b)&#123;</span><br><span class="line">int dx = find(a);</span><br><span class="line">int dy = find(b);</span><br><span class="line">dis[dx]+=size[dy];</span><br><span class="line">size[dy]+=size[dx];</span><br><span class="line">head[dx] = dy;</span><br><span class="line">return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">int t;</span><br><span class="line">cin &gt;&gt; t;</span><br><span class="line">for(int i = 0;i&lt;MAXN;++i)size[i] = 1,head[i]  = i,dis[i] =0;</span><br><span class="line">char ch;</span><br><span class="line">int a,b;</span><br><span class="line">for(int i = 0;i&lt;t;++i)&#123;</span><br><span class="line">cin &gt;&gt; ch &gt;&gt; a &gt;&gt; b;</span><br><span class="line">if(ch == &apos;M&apos;)UNION(a,b);</span><br><span class="line">else&#123;</span><br><span class="line">int dx = find(a);</span><br><span class="line">int dy = find(b);</span><br><span class="line">if(dx!=dy)cout &lt;&lt; -1 &lt;&lt; endl;</span><br><span class="line">else cout &lt;&lt; abs(dis[a]-dis[b])-1 &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">for(int i =1;i&lt;=5;++i)&#123;</span><br><span class="line">cout &lt;&lt; dis[i] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.luogu.org/problemnew/show/P1196&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;P1196 [NOI2002]银河英雄传说&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;代码先附上，题解过两天补。&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>FTP记住密码后的麻烦解决</title>

@@ -2,19 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>peterpan的博客</title>
+<title>并查集 - peterpan的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="peterpan的博客">
-<meta property="og:url" content="https://www.peterpan666.com/index.html">
+    <meta name="description" content="P1196 [NOI2002]银河英雄传说 代码先附上，题解过两天补。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;typedef long long ll;const int">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并查集">
+<meta property="og:url" content="https://www.peterpan666.com/2019/07/09/并查集/index.html">
 <meta property="og:site_name" content="peterpan的博客">
+<meta property="og:description" content="P1196 [NOI2002]银河英雄传说 代码先附上，题解过两天补。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;typedef long long ll;const int">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.peterpan666.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-09T11:34:25.023Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="peterpan的博客">
+<meta name="twitter:title" content="并查集">
+<meta name="twitter:description" content="P1196 [NOI2002]银河英雄传说 代码先附上，题解过两天补。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;typedef long long ll;const int">
 <meta name="twitter:image" content="https://www.peterpan666.com/images/og_image.png">
 
 
@@ -89,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="peterpan的博客" height="28">
+                <img src="/images/logo.png" alt="并查集" height="28">
             
             </a>
         </div>
@@ -97,7 +101,7 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item is-active" href="/">Home</a>
+                <a class="navbar-item" href="/">Home</a>
                 
                 <a class="navbar-item" href="/archives">Archives</a>
                 
@@ -112,6 +116,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -125,8 +133,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    <div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
         
@@ -141,7 +148,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/07/09/并查集/">并查集</a>
+                并查集
             
         </h1>
         <div class="content">
@@ -152,309 +159,85 @@
         
         
         
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-04T07:08:59.000Z">2019-07-04</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/04/FTP记住密码后的麻烦解决/">FTP记住密码后的麻烦解决</a>
-            
-        </h1>
-        <div class="content">
-            <p>转载自我自己之前<a href="https://blog.csdn.net/qq_40655345/article/details/84146214" target="_blank" rel="noopener">CSDN的博客</a><br>在大一的时候我学校里计算机相关的老师会让我们在ftp服务器上下载作业，我才开始接触ftp服务器。在一次使用时点击了保存密码的选项，之后的登陆就变得很不愉快了。因为记住密码的原因，每次登陆ftp服务器，都会自动进入之前保存的那个用户，无法在同一个服务器上其他的账户上下载东西，也就是当时不知道如何切换到那个服务器上的其他账户。</p>
-<p>在网上查阅了近2个小时的方法，才找到了能够解决这个问题的办法，也就是一个登陆ftp服务器的万用方法。</p>
-<pre><code>ftp://用户名:密码@地址</code></pre><p>通过这个方式就可以在已保存密码的情况下，登陆其他的用户了。</p>
-<p>希望能帮助到那些萌新小白新生，希望能让那些急于寻找解决办法的人，不要像我那样浪费了很多时间。</p>
-
-        </div>
-        
-        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
 
 
 
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-04T03:13:03.000Z">2019-07-04</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/2019/07/04/二分图/">二分图</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>无向图G的二分图的充分必要条件：  </p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G至少有两个点；对于G中每条回路长度得是偶数。</span><br></pre></td></tr></table></figure>
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.JPG" alt="支付宝"></div>
+</a>
 
-<p>匹配</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于G的一个子图M，M的边集中任何两条边都不依附于同一个点，则称这个边集是一个匹配，匹配的数量由边数决定。(可以理解左右两堆点，一一匹配，左边的点只能跟右边的一个点匹配)</span><br></pre></td></tr></table></figure>
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.JPG" alt="微信"></div>
+</a>
 
-<p>完美匹配</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">匹配中所有顶点都是匹配的点。</span><br></pre></td></tr></table></figure>
-
-<p>交替路</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边形成的路径。</span><br></pre></td></tr></table></figure>
-
-<p>增广路</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从一个未匹配点出发，走交替路，途经另一位匹配点，这段路成为增广路，即未匹配边未匹配边加一。</span><br></pre></td></tr></table></figure>
-
-<h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><p>通过增广路不断“反色”求解最大匹配的问题。</p>
-
+                
         </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
         
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/04/FTP记住密码后的麻烦解决/">
+                <span class="level-item">FTP记住密码后的麻烦解决</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
 </div>
 
 
 
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-03T03:00:50.000Z">2019-07-03</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/03/Ubuntu/">Ubuntu</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="ubuntu-安装在vmware上"><a href="#Ubuntu-安装在VMware上" class="headerlink" title="Ubuntu 安装在VMware上"></a>Ubuntu 安装在VMware上</h2><p>笔记本安装遇到的分辨率和刷新率的问题，先使用设置中调整分辨率再进行安装</p>
-<h4 id="vmware-tool文件复制到桌面之后再提取到主目录不然会报错"><a href="#VMware-Tool文件复制到桌面之后再提取到主目录，不然会报错" class="headerlink" title="VMware Tool文件复制到桌面之后再提取到主目录，不然会报错"></a>VMware Tool文件复制到桌面之后再提取到主目录，不然会报错</h4><h4 id="共享文件夹老挂载不上"><a href="#共享文件夹老挂载不上，" class="headerlink" title="共享文件夹老挂载不上，"></a>共享文件夹老挂载不上，</h4>
-        </div>
-        
-        
-        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'JA7G0e8j3239G9KftxfkvMRI-gzGzoHsz',
+        app_key: 'mvTlUFiR83p0V1EL6mtYMqbf',
+        placeholder: '多来留言啊~'
+    });
+</script>
+
     </div>
 </div>
 
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-02T15:45:17.000Z">2019-07-02</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/02/iracus主题个性化配置/">iracus主题个性化配置</a>
-            
-        </h1>
-        <div class="content">
-            <h3 id="201973-站点无法访问重定向太多了过了一段时间又好了可能配置之后dns没有及时更新导致的"><a href="#2019-7-3-站点无法访问，重定向太多了，过了一段时间又好了，可能配置之后DNS没有及时更新导致的。" class="headerlink" title="2019/7/3 站点无法访问，重定向太多了，过了一段时间又好了，可能配置之后DNS没有及时更新导致的。"></a>2019/7/3 站点无法访问，重定向太多了，过了一段时间又好了，可能配置之后DNS没有及时更新导致的。</h3><h3 id="谷歌收录挺快的百度收录通过cname方式验证了网站可算验证成功了"><a href="#谷歌收录挺快的，百度收录通过CNAME方式验证了网站，可算验证成功了。" class="headerlink" title="谷歌收录挺快的，百度收录通过CNAME方式验证了网站，可算验证成功了。"></a>谷歌收录挺快的，百度收录通过CNAME方式验证了网站，可算验证成功了。</h3><h3 id="尝试修复toc锚点即目录无法跳转的问题"><a href="#尝试修复toc锚点，即目录无法跳转的问题" class="headerlink" title="尝试修复toc锚点，即目录无法跳转的问题"></a>尝试修复toc锚点，即目录无法跳转的问题</h3><p>参看<a href="https://convivae.top/2019/03/29/Hexo%20博客踩坑/#toc-锚点-undefined" target="_blank" rel="noopener">帮助</a>，由于我没有对应的文件，我未采用方法1，采用方法2保留到了原版本，解决了该问题</p>
-<h3 id="图片放大"><a href="#图片放大" class="headerlink" title="图片放大"></a>图片放大</h3><p><del>参照上面那个链接</del></p>
-<h3 id="cloudflare使用"><a href="#Cloudflare使用" class="headerlink" title="Cloudflare使用"></a>Cloudflare使用</h3><p>访问变快了，挺不错的，之后不好用了再用别的办法吧。 之前碰到了开启CDN服务不断重定向的问题，通过<a href="https://www.wpzhiku.com/wordpress-wang-zhan-shi-yong-cloudflare-hou-ti-shi-jiang-nin-chong-ding-xiang-de-ci-shu-guo-duo-de-yuan-yin-ji-jie-jue-ban-fa/" target="_blank" rel="noopener">这个</a>解决了。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-02T07:58:17.000Z">2019-07-02</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/02/编程的疑难/">编程的疑难</a>
-            
-        </h1>
-        <div class="content">
-            <ul>
-<li>程序突然卡住，不按照顺序执行，然后过了一会儿结束了，可能是开辟内存太多，爆了，程序提前结束。</li>
-<li>结构体内不能开辟太多的空间，不然会爆。</li>
-<li>main函数最后可以控制返回值，程序正常运行之后会得到预期的返回值，如果返回值不同说明程序提前结束（可能是运行时错误）了。</li>
-<li>用define代替表达式时，记得运用时加上括号，编译器不会自动帮你计算结果后返回，所以不加括号在有乘法的时候可能会出错。</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-28T15:20:28.000Z">2019-06-28</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/28/模拟退火算法/">模拟退火算法</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong>P1337 [JSOI2004]平衡点 / 吊打XXX</strong><br><a href="https://www.luogu.org/problemnew/show/P1337" target="_blank" rel="noopener"><strong>洛谷题目传送门</strong></a><br><strong>跟着<a href="https://www.cnblogs.com/flashhu/category/1202079.html" target="_blank" rel="noopener">大佬的博客</a>学习。</strong><br><em>通常求最优解问题，贪心思路。</em><br>模拟退火降温的过程，徐徐降温，让物体慢慢收缩，形成结晶，达到内能最低的状态。期间粒子从活跃地运动到逐渐稳定。<br><strong>这种方法不一定能找到最优解，提高温度的上限能更大概率的找到最优解</strong><br>主要参数：</p>
-<ul>
-<li>温度：T</li>
-<li>降温系数：D（每次以固定的比率降温）</li>
-<li>温度下限：eps（到达温度下限就停止）</li>
-<li>当前解：tx（若出现更优的结果，当前解更新，或者在一定接受度的情况下接受波动后的解）</li>
-<li>最优解：当结果出现更优的情况时要更新最优解</li>
-<li>解的变动值：$\Delta$x(由当前温度T和一定的随机波动决定)</li>
-<li>结果：目标（当有更好的结果时更新）</li>
-<li>当前解的函数值与波动解的函数值之差：F（tx）-F（tx+$\Delta$x）</li>
-<li>接受度：<br>$e^{(-(F(X_{new})-F(X_{old}))/T)}$接受度&gt;(long double)rand()/RAND_MAX，就接受新的变动后的解。  </li>
-<li><em>RAND_MAX是c中的宏定义，结果是随机数的最大值，（2</em>rand（）-RAND_MAX）能得到[-RAND_MAX,RAND_MAX]范围内的全部结果。**</li>
-</ul>
-<p>调参过程比较麻烦，之后多练习之后再来补充经验。不过需要注意模拟退火一般不是正解。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-25T08:42:02.000Z">2019-06-25</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/25/数据结构复习/">数据结构复习</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="线性表的插入与删除"><a href="#线性表的插入与删除" class="headerlink" title="线性表的插入与删除"></a>线性表的插入与删除</h2><h2 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h2><ul>
-<li>长度，第一层的元素个数，空表长度为0，其它表长度为最大的那层括号中逗号数加一。  </li>
-<li>深度，转换成图形表示，相当于看二叉树深度，也可以看元素被多少层匹配的括号包裹，层数就等于对应深度。</li></ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/25/数据结构复习/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-</div>
+<script type="text/javascript" src="/js/zooming.js"></script>
+<!-- 图片放大功能 --></div>
                 
 
 
@@ -548,6 +331,17 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -867,7 +661,7 @@
                 <div class="level-start has-text-centered-mobile">
                     <a class="footer-logo is-block has-mb-6" href="/">
                     
-                        <img src="/images/logo.png" alt="peterpan的博客" height="28">
+                        <img src="/images/logo.png" alt="并查集" height="28">
                     
                     </a>
                     <p class="is-size-15">
