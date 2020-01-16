@@ -8,6 +8,7 @@
 
 
     <meta name="description" content="P1196 [NOI2002]银河英雄传说">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并查集">
 <meta property="og:url" content="https://www.peterpan666.com/2019/07/09/并查集/index.html">
@@ -15,7 +16,7 @@
 <meta property="og:description" content="P1196 [NOI2002]银河英雄传说">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.peterpan666.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-24T06:09:32.204Z">
+<meta property="og:updated_time" content="2020-01-16T03:45:59.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并查集">
 <meta name="twitter:description" content="P1196 [NOI2002]银河英雄传说">
@@ -157,6 +158,15 @@
 
 <p>代码先附上，题解过两天补。</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">3e4</span>+<span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> head[MAXN],size[MAXN],dis[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(head[x]==x)<span class="hljs-keyword">return</span> head[x];</span><br><span class="line">	<span class="hljs-keyword">int</span> k = head[x];</span><br><span class="line">	head[x] = find(head[x]);</span><br><span class="line">	dis[x] += dis[k];</span><br><span class="line">	<span class="hljs-keyword">return</span> head[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">UNION</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> dx = find(a);</span><br><span class="line">	<span class="hljs-keyword">int</span> dy = find(b);</span><br><span class="line">	dis[dx]+=size[dy];</span><br><span class="line">	size[dy]+=size[dx];</span><br><span class="line">	head[dx] = dy;</span><br><span class="line">	<span class="hljs-keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> t;</span><br><span class="line">	<span class="hljs-built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;MAXN;++i)size[i] = <span class="hljs-number">1</span>,head[i]  = i,dis[i] =<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">char</span> ch;</span><br><span class="line">	<span class="hljs-keyword">int</span> a,b;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;t;++i)&#123;</span><br><span class="line">		<span class="hljs-built_in">cin</span> &gt;&gt; ch &gt;&gt; a &gt;&gt; b;</span><br><span class="line">		<span class="hljs-keyword">if</span>(ch == <span class="hljs-string">'M'</span>)UNION(a,b);</span><br><span class="line">		<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">			<span class="hljs-keyword">int</span> dx = find(a);</span><br><span class="line">			<span class="hljs-keyword">int</span> dy = find(b);</span><br><span class="line">			<span class="hljs-keyword">if</span>(dx!=dy)<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">abs</span>(dis[a]-dis[b])<span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">	for(int i =1;i&lt;=5;++i)&#123;</span></span><br><span class="line"><span class="hljs-comment">		cout &lt;&lt; dis[i] &lt;&lt; endl;</span></span><br><span class="line"><span class="hljs-comment">	&#125;</span></span><br><span class="line"><span class="hljs-comment">	*/</span></span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/算法/">算法</a>
+                </div>
+            </div>
         </div>
         
         
@@ -539,7 +549,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/算法/">
                         <span class="tag">算法</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -714,7 +724,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/算法/">
                         <span class="tag">算法</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
