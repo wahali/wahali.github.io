@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>扩展kmp - peterpan的博客</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="扩展kmp扩展kmp用来求解一个字符串的最长回文子串和最长重复子串。大佬讲得很详细,有图看起来也很清楚在队友的帮助下，终于看懂了。求解S串的每个后缀与T串的最长前缀匹配长度，需要用到T串每个后缀对T串的最长前缀匹配长度。由👆博客指出的规律，求$T$串的Next数组就相当于用一个与T串相同的$T’$串与T串扩展kmp，求解$T’$的extend就相当于T的Next数组。存储的是对任意前缀的非前缀">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扩展kmp">
+<meta property="og:url" content="https://www.peterpan666.com/2019/08/26/扩展kmp/index.html">
+<meta property="og:site_name" content="peterpan的博客">
+<meta property="og:description" content="扩展kmp扩展kmp用来求解一个字符串的最长回文子串和最长重复子串。大佬讲得很详细,有图看起来也很清楚在队友的帮助下，终于看懂了。求解S串的每个后缀与T串的最长前缀匹配长度，需要用到T串每个后缀对T串的最长前缀匹配长度。由👆博客指出的规律，求$T$串的Next数组就相当于用一个与T串相同的$T’$串与T串扩展kmp，求解$T’$的extend就相当于T的Next数组。存储的是对任意前缀的非前缀">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://www.peterpan666.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-24T09:29:49.061Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="扩展kmp">
+<meta name="twitter:description" content="扩展kmp扩展kmp用来求解一个字符串的最长回文子串和最长重复子串。大佬讲得很详细,有图看起来也很清楚在队友的帮助下，终于看懂了。求解S串的每个后缀与T串的最长前缀匹配长度，需要用到T串每个后缀对T串的最长前缀匹配长度。由👆博客指出的规律，求$T$串的Next数组就相当于用一个与T串相同的$T’$串与T串扩展kmp，求解$T’$的extend就相当于T的Next数组。存储的是对任意前缀的非前缀">
+<meta name="twitter:image" content="https://www.peterpan666.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/lufi.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="扩展kmp" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-26T11:11:11.000Z">2019-08-26</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                扩展kmp
+            
+        </h1>
+        <div class="content">
+            <a id="more"></a>
+<h2 id="扩展kmp"><a href="#扩展kmp" class="headerlink" title="扩展kmp"></a>扩展kmp</h2><p>扩展kmp用来求解一个字符串的最长回文子串和最长重复子串。<br><a href="https://segmentfault.com/a/1190000008663857" target="_blank" rel="noopener">大佬讲得很详细,有图看起来也很清楚</a><br><del>在队友的帮助下，终于看懂了。</del><br>求解S串的每个后缀与T串的最长前缀匹配长度，需要用到T串每个后缀对T串的最长前缀匹配长度。由👆博客指出的规律，求$T$串的Next数组就相当于用一个与T串相同的$T’$串与T串扩展kmp，求解$T’$的extend就相当于T的Next数组。存储的是对任意前缀的非前缀子串与原串前缀匹配的最长后缀长度。</p>
+<h2 id="kmp"><a href="#kmp" class="headerlink" title="kmp"></a>kmp</h2><p>kmp 中的next数组存储的是以i结尾的非前缀子串与原串的前缀能够匹配的最长长度，匹配长度为$next[i],即子串$ $S[(i-(next[i]-1)),…,i]$  与子串 $S[1,…,next[i]]$匹配。 <strong><em>(下标从1开始)</em></strong><br>扩展kmp中的next[i]含义为：S[i]…S[n]与S的最长相同前缀长度，n为S串的长度，下标从1开始。存储对每一个后缀而言的最长前缀匹配长度。   </p>
+<h2 id="最小表示法"><a href="#最小表示法" class="headerlink" title="最小表示法"></a>最小表示法</h2><p>字符串首尾相连，找到一个位置，从该位置向后形成的字符串字典序最小。<br>模板：<br>定义i，j，k。<br>i，j为比较的两字符串的头，k为匹配长度</p>
+<pre><code class="c++"><span class="function"><span class="keyword">int</span> <span class="title">get_min</span><span class="params">(<span class="built_in">string</span> s)</span></span>{  <span class="comment">//返回下标</span>
+    <span class="keyword">int</span> len = s.length();
+    <span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">1</span>,k = <span class="number">0</span>,t;
+    <span class="keyword">while</span>(i&lt; len &amp;&amp; j &lt; len &amp;&amp; k &lt; len){
+        t = s[(i+k)%len]  - s[(j+k)%len];
+        <span class="keyword">if</span>(!t)k++; <span class="comment">//字符串相等，匹配长度加一 </span>
+        <span class="keyword">else</span>{
+            <span class="keyword">if</span>(t &gt; <span class="number">0</span>)i += k+<span class="number">1</span>; <span class="comment">//i串比j串更大，直接跳过之前匹配的相同的部分长度k </span>
+            <span class="keyword">else</span> j += k + <span class="number">1</span>; <span class="comment">//j串比i串字典序更大，直接跳过之前匹配的相同的部分长度k </span>
+            <span class="keyword">if</span>(i == j) j++; <span class="comment">// 将字符串起点设置在不同的地方 </span>
+            k = <span class="number">0</span>;
+        }
+    }
+    <span class="keyword">return</span> i &gt; j ? j : i;  
+}</code></pre>
+<p>模板题：<a href="https://vjudge.net/problem/POJ-1509" target="_blank" rel="noopener">POJ - 1509</a>  </p>
+<h2 id="z-function"><a href="#Z-function" class="headerlink" title="Z-function"></a>Z-function</h2><p>定义一个函数z()，z(i)是指由s[i]开始的字串，与s[0]开始的字串可以匹配到多长。也就是说 s[0…z(i)−1]=s[i…i+z(i)−1]。即存储从i开始的原串的后缀与原串的前缀的的最长前缀匹配长度</p>
+
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.JPG" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.JPG" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/08/回文自动机PAM/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">回文自动机PAM</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/26/Ac自动机/">
+                <span class="level-item">Ac自动机</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'JA7G0e8j3239G9KftxfkvMRI-gzGzoHsz',
+        app_key: 'mvTlUFiR83p0V1EL6mtYMqbf',
+        placeholder: '多来留言啊~'
+    });
+</script>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/zooming.js"></script>
+<!-- 图片放大功能 --></div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/lufi.jpg" alt="PeterPan666">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        PeterPan666
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        等风来，不如逐风去(developer)
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        24
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/wahali">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#扩展kmp">
+        <span class="has-mr-6">1</span>
+        <span>扩展kmp</span>
+        </a></li><li>
+        <a class="is-flex" href="#kmp">
+        <span class="has-mr-6">2</span>
+        <span>kmp</span>
+        </a></li><li>
+        <a class="is-flex" href="#最小表示法">
+        <span class="has-mr-6">3</span>
+        <span>最小表示法</span>
+        </a></li><li>
+        <a class="is-flex" href="#z-function">
+        <span class="has-mr-6">4</span>
+        <span>Z-function</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T01:33:29.000Z">2020-01-08</time></div>
+                    <a href="/2020/01/08/软件工程/" class="has-link-black-ter is-size-6">软件工程</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T06:18:04.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/最小生成树/" class="has-link-black-ter is-size-6">最小生成树</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T04:13:40.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/dp/" class="has-link-black-ter is-size-6">dp</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T13:47:35.000Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/回文自动机PAM/" class="has-link-black-ter is-size-6">回文自动机PAM</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:11:11.000Z">2019-08-26</time></div>
+                    <a href="/2019/08/26/扩展kmp/" class="has-link-black-ter is-size-6">扩展kmp</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">15</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/算法/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T01:33:29.000Z">2020-01-08</time></div>
+                    <a href="/2020/01/08/软件工程/" class="has-link-black-ter is-size-6">软件工程</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T06:18:04.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/最小生成树/" class="has-link-black-ter is-size-6">最小生成树</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T04:13:40.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/dp/" class="has-link-black-ter is-size-6">dp</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T13:47:35.000Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/回文自动机PAM/" class="has-link-black-ter is-size-6">回文自动机PAM</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:11:11.000Z">2019-08-26</time></div>
+                    <a href="/2019/08/26/扩展kmp/" class="has-link-black-ter is-size-6">扩展kmp</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">15</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/算法/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer class="footer">
+        <div class="container">
+            <div class="level">
+                <div class="level-start has-text-centered-mobile">
+                    <a class="footer-logo is-block has-mb-6" href="/">
+                    
+                        <img src="/images/logo.png" alt="扩展kmp" height="28">
+                    
+                    </a>
+                    <p class="is-size-15">
+                    &copy; 2020 Peter_Pan_666&nbsp;
+                    <!-- Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                            href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> -->
+                    
+                    </p>
+                    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("6/20/2019 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " /*+ snum + " 秒"*/; 
+                } 
+            setInterval("createtime()",250);
+            </script>
+                </div>
+                <div class="level-end">
+                
+                </div>
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                        本站总访问量<span id="busuanzi_value_site_pv">span>次
+                  span>
+                <span id="busuanzi_container_site_uv" class="theme-info">
+                      |  本站访客数<span id="busuanzi_value_site_uv">span>人次
+                  span>
+            </span></span></span></span></div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -132,7 +132,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-09T11:32:58.000Z">2019-07-09</time>
+                <time class="level-item has-text-grey" datetime="2020-01-08T01:33:29.000Z">2020-01-08</time>
                 
                 
                 
@@ -141,213 +141,43 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/07/09/并查集/">并查集</a>
+                <a class="has-link-black-ter" href="/2020/01/08/软件工程/">软件工程</a>
             
         </h1>
         <div class="content">
-            <p><a href="https://www.luogu.org/problemnew/show/P1196" target="_blank" rel="noopener">P1196 [NOI2002]银河英雄传说</a></p>
-<p>代码先附上，题解过两天补。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int MAXN = 3e4+5;</span><br><span class="line"></span><br><span class="line">int head[MAXN],size[MAXN],dis[MAXN];</span><br><span class="line"></span><br><span class="line">int find(int x)&#123;</span><br><span class="line">	if(head[x]==x)return head[x];</span><br><span class="line">	int k = head[x];</span><br><span class="line">	head[x] = find(head[x]);</span><br><span class="line">	dis[x] += dis[k];</span><br><span class="line">	return head[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void UNION(int a,int b)&#123;</span><br><span class="line">	int dx = find(a);</span><br><span class="line">	int dy = find(b);</span><br><span class="line">	dis[dx]+=size[dy];</span><br><span class="line">	size[dy]+=size[dx];</span><br><span class="line">	head[dx] = dy;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	for(int i = 0;i&lt;MAXN;++i)size[i] = 1,head[i]  = i,dis[i] =0;</span><br><span class="line">	char ch;</span><br><span class="line">	int a,b;</span><br><span class="line">	for(int i = 0;i&lt;t;++i)&#123;</span><br><span class="line">		cin &gt;&gt; ch &gt;&gt; a &gt;&gt; b;</span><br><span class="line">		if(ch == &apos;M&apos;)UNION(a,b);</span><br><span class="line">		else&#123;</span><br><span class="line">			int dx = find(a);</span><br><span class="line">			int dy = find(b);</span><br><span class="line">			if(dx!=dy)cout &lt;&lt; -1 &lt;&lt; endl;</span><br><span class="line">			else cout &lt;&lt; abs(dis[a]-dis[b])-1 &lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	/*</span><br><span class="line">	for(int i =1;i&lt;=5;++i)&#123;</span><br><span class="line">		cout &lt;&lt; dis[i] &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	*/</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-04T07:08:59.000Z">2019-07-04</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/04/FTP记住密码后的麻烦解决/">FTP记住密码后的麻烦解决</a>
-            
-        </h1>
-        <div class="content">
-            <p>转载自我自己之前<a href="https://blog.csdn.net/qq_40655345/article/details/84146214" target="_blank" rel="noopener">CSDN的博客</a><br>在大一的时候我学校里计算机相关的老师会让我们在ftp服务器上下载作业，我才开始接触ftp服务器。在一次使用时点击了保存密码的选项，之后的登陆就变得很不愉快了。因为记住密码的原因，每次登陆ftp服务器，都会自动进入之前保存的那个用户，无法在同一个服务器上其他的账户上下载东西，也就是当时不知道如何切换到那个服务器上的其他账户。</p>
-<p>在网上查阅了近2个小时的方法，才找到了能够解决这个问题的办法，也就是一个登陆ftp服务器的万用方法。</p>
-<pre><code>ftp://用户名:密码@地址</code></pre><p>通过这个方式就可以在已保存密码的情况下，登陆其他的用户了。</p>
-<p>希望能帮助到那些萌新小白新生，希望能让那些急于寻找解决办法的人，不要像我那样浪费了很多时间。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-04T03:13:03.000Z">2019-07-04</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/04/二分图/">二分图</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>无向图G的二分图的充分必要条件：  </p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G至少有两个点；对于G中每条回路长度得是偶数。</span><br></pre></td></tr></table></figure>
-
-<p>匹配</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于G的一个子图M，M的边集中任何两条边都不依附于同一个点，则称这个边集是一个匹配，匹配的数量由边数决定。(可以理解左右两堆点，一一匹配，左边的点只能跟右边的一个点匹配)</span><br></pre></td></tr></table></figure>
-
-<p>完美匹配</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">匹配中所有顶点都是匹配的点。</span><br></pre></td></tr></table></figure>
-
-<p>交替路</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边形成的路径。</span><br></pre></td></tr></table></figure>
-
-<p>增广路</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从一个未匹配点出发，走交替路，途经另一位匹配点，这段路成为增广路，即未匹配边未匹配边加一。</span><br></pre></td></tr></table></figure>
-
-<h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><p>通过增广路不断“反色”求解最大匹配的问题。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-03T03:00:50.000Z">2019-07-03</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/03/Ubuntu/">Ubuntu</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="ubuntu-安装在vmware上"><a href="#Ubuntu-安装在VMware上" class="headerlink" title="Ubuntu 安装在VMware上"></a>Ubuntu 安装在VMware上</h2><p>笔记本安装遇到的分辨率和刷新率的问题，先使用设置中调整分辨率再进行安装</p>
-<h4 id="vmware-tool文件复制到桌面之后再提取到主目录不然会报错"><a href="#VMware-Tool文件复制到桌面之后再提取到主目录，不然会报错" class="headerlink" title="VMware Tool文件复制到桌面之后再提取到主目录，不然会报错"></a>VMware Tool文件复制到桌面之后再提取到主目录，不然会报错</h4><h4 id="共享文件夹老挂载不上"><a href="#共享文件夹老挂载不上，" class="headerlink" title="共享文件夹老挂载不上，"></a>共享文件夹老挂载不上，</h4>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-02T15:45:17.000Z">2019-07-02</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/02/iracus主题个性化配置/">iracus主题个性化配置</a>
-            
-        </h1>
-        <div class="content">
-            <h3 id="201973-站点无法访问重定向太多了过了一段时间又好了可能配置之后dns没有及时更新导致的"><a href="#2019-7-3-站点无法访问，重定向太多了，过了一段时间又好了，可能配置之后DNS没有及时更新导致的。" class="headerlink" title="2019/7/3 站点无法访问，重定向太多了，过了一段时间又好了，可能配置之后DNS没有及时更新导致的。"></a>2019/7/3 站点无法访问，重定向太多了，过了一段时间又好了，可能配置之后DNS没有及时更新导致的。</h3><h3 id="谷歌收录挺快的百度收录通过cname方式验证了网站可算验证成功了"><a href="#谷歌收录挺快的，百度收录通过CNAME方式验证了网站，可算验证成功了。" class="headerlink" title="谷歌收录挺快的，百度收录通过CNAME方式验证了网站，可算验证成功了。"></a>谷歌收录挺快的，百度收录通过CNAME方式验证了网站，可算验证成功了。</h3><h3 id="尝试修复toc锚点即目录无法跳转的问题"><a href="#尝试修复toc锚点，即目录无法跳转的问题" class="headerlink" title="尝试修复toc锚点，即目录无法跳转的问题"></a>尝试修复toc锚点，即目录无法跳转的问题</h3><p>参看<a href="https://convivae.top/2019/03/29/Hexo%20博客踩坑/#toc-锚点-undefined" target="_blank" rel="noopener">帮助</a>，由于我没有对应的文件，我未采用方法1，采用方法2保留到了原版本，解决了该问题</p>
-<h3 id="图片放大"><a href="#图片放大" class="headerlink" title="图片放大"></a>图片放大</h3><p><del>参照上面那个链接</del></p>
-<h3 id="cloudflare使用"><a href="#Cloudflare使用" class="headerlink" title="Cloudflare使用"></a>Cloudflare使用</h3><p>访问变快了，挺不错的，之后不好用了再用别的办法吧。 之前碰到了开启CDN服务不断重定向的问题，通过<a href="https://www.wpzhiku.com/wordpress-wang-zhan-shi-yong-cloudflare-hou-ti-shi-jiang-nin-chong-ding-xiang-de-ci-shu-guo-duo-de-yuan-yin-ji-jie-jue-ban-fa/" target="_blank" rel="noopener">这个</a>解决了。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-02T07:58:17.000Z">2019-07-02</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/02/编程的疑难/">编程的疑难</a>
-            
-        </h1>
-        <div class="content">
-            <ul>
-<li>程序突然卡住，不按照顺序执行，然后过了一会儿结束了，可能是开辟内存太多，爆了，程序提前结束。</li>
-<li>结构体内不能开辟太多的空间，不然会爆。</li>
-<li>main函数最后可以控制返回值，程序正常运行之后会得到预期的返回值，如果返回值不同说明程序提前结束（可能是运行时错误）了。</li>
-<li>用define代替表达式时，记得运用时加上括号，编译器不会自动帮你计算结果后返回，所以不加括号在有乘法的时候可能会出错。</li>
+            <a id="more"></a>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="填空题"><a href="#填空题" class="headerlink" title="填空题"></a>填空题</h4><p>1.按软件的功能进行划分，软件可划分为<u>系统软件</u>、<u>支撑软件</u>、<u>应用软件</u>。  
+2.软件生命周期由<u>软件定义</u>、<u>软件开发</u>和<u>运行维护</u>3个时期。每个时期又可进一步划分为若干阶段。其中，软件开发时期由<u>总体设计</u>、<u>详细设计</u>、<u>编码和单元测试</u>和<u>综合测试</u>4个阶段构成。<br>3.在可行性研究阶段，分析员要从<u>技术可行性</u>、<u>经济可行性</u>和<u>操作可行性</u>等方面来研究每种解决方案的可行性。<br>4.<u>内聚</u>标志着一个模块内部每个元素彼此结合的紧密程度，<u>耦合</u>是对一个软件结构内不同模块之间互联程度的度量。<br>5.面向数据流的设计方法把信息流映射成软件结构，信息流的类型决定了映射的方法，因此，设计的过程就有了基于变换流的分析方法和基于<u>事务</u>流的分析方法两种。<br>6.软件体系结构通常可以看作是三个要素构成的，这三个要素分别是<u>构件</u>、<u>连接件</u>和<u>约束<br></u>。
+<strong><em>这三个是最基本要素，网上参考核心的五个要素是：构件、连接件、配置、端口和角色</em></strong><br>7.结构化方法有<u>结构化分析</u>、<u>结构化设计</u>、<u>结构化程序设计</u>它是一种面向数据流的开发方法。<br>结构化方法由<u>jiegouhua </u><br>8.决定软件的可维护性的5个主要因素分别是：<u>可理解性</u>、<u>可测试性</u>、<u>可修改性</u>、<u>可移植性</u>、<u>可重用性</u>。 
+9.在UML图中描述一个对象的生命周期的图是<u>状态图</u><br>10.在类图中，可见性包括<u>公有的</u>、<u>私有的</u>、<u>保护的</u>。
+11.程序的三种基本控制结构是<u>顺序</u>、<u>选择</u>、<u>循环</u>。</p>
+<h4 id="判断题"><a href="#判断题" class="headerlink" title="判断题"></a>判断题</h4><p>（F）1.软件的维护成本通常比开发成本低。<br>软件生命周期中所花费用最多的阶段是软件维护<br>（T）2.HIPO法既是需求分析方法，又是软件设计方法。<br>（F）3.数据流图中需要描绘出数据流出现的条件。<br>DFD应该描绘所有可能的数据流向，而不应该描绘出现某个数据流的条件。<br>（T）4.用户界面设计对系统的成功至关重要，一个设计的很差的用户界面可能会导致用户拒绝使用该系统。<br>（F）5.逻辑覆盖测试中，满足条件覆盖的测试案例同时也满足判定覆盖。  <strong><em>不一定</em></strong><br>（F）6.结构图是精确表达程序结构的图形表示法。因此，有时也可以将系统的结构图当作系统流程图使用。</p>
+<p>来自网络 系统流程图：反映主体框架；系统结构图：反映的是系统中模块的调用关系和层次关系,谁调用谁,有一个先后次序(时序)关系。两种图作用不同，不能互用<br>（F）7.状态图是UML中系统的静态方面进行建模的图之一。</p>
+<p>来自PPT 静态建模有四种：用例图、类图、对象图、包图；动态建模有五种：消息、顺序图、协作图、活动图、状态图。</p>
+<p>（T）8.顺序图由角色、对象、生命线、激活和消息组成。<br>（F）9.在等价类测试方法中，为了提高测试效率，一个测试用例可以覆盖多个无效等价类。<br>(T)10.在软件的生存周期中，工作量所占的比最大的阶段就是维护阶段。<br>(T)11.通过功能分解可以完成数据流图的细化<br>(F)12.当验收测试通过，软件开发就完成了。<br>–答案源自南昌大学期末卷多次出现，但是有疑惑，不知道原因<br>（T）13在模块化设计中，模块越小，模块的有点越明显。一般来说，模块的大小都在10行以下。</p>
+<h4 id="问答题"><a href="#问答题" class="headerlink" title="问答题"></a>问答题</h4><p>1.请简要介绍一下软件工程的7个方面的本质特性<br>书上P6</p>
+<p>2.简单论述软件体系结构的概念<br>具体见软件体系结构的PPT。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;体系结构是软件的总体框架，描述了软件系统的系统组织方式，包括构成系统的构件接口、行为模式、协作关系以及对这些问题的决策等信息；体系结构不仅设计到结构与行为，而且还涉及到系统的使用、功能、性能、适应性、重用性、可理解性、经济性和技术约束的均衡；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;软件体系结构是针对软件系统的规模和复杂性进行系统全局结构的设计和规划，包括全局组织结构；全局控制结构；通信和同步以及数据存取的协议；规定设计元素的功能；设计元素的组合；物理分布；规模和性能；演绎的维度；设计方案的选择等。<br>3.在设计黑盒测试方案时，应该考虑哪些方面的问题？<br>书P171-P172<br>4.请简单比较一下自顶向下和自底向上集成测试策略。<br>书P157-159<br>5.UML中协作图和顺序图的区别是什么？<br>（以下来自网络）时序图主要侧重于对象间消息传递在时间上的先后关系, 而协作图表达对象间的交互过程及对象间的关联关系，或者说为空间上的关系。<br>其余部分见两者定义再分析</p>
+<h4 id="分析简答题"><a href="#分析简答题" class="headerlink" title="分析简答题"></a>分析简答题</h4><p>1.根据以下条件，试画出某高校财务系统中计算机教工出差补助的 <strong><em>判定表</em></strong><br>出差补助政策如下：<br>a）如果教工已经办理长期出差手续，则无论出差到哪里，出差补助都是每天80元<br>b）如果教工没有办理出差手续，则出差到一线城市，每天补助150元；出差到其他城市，每天补助100元；出差到偏远地区，每天补助300元。<br>c）如果教工本月未出差，无论是否办理长期出差手续，都没有出差补助。<br><img src="https://i.imgur.com/AD3O3Fh.jpg" alt="test4-1"></p>
+<p>2.银行计算机储蓄系统的工作过程大致如下：储户填写的存款单或取款单有业务员键入系统，如果是存款则系统记录存款人姓名，住址（或电话号码）、身份证号码、存款类型、存款日期、到期日期、利率及密码（可选）等信息，并印出存单给储户：如果是取款而且存款对象留有密码，则系统首先核对储户密码，或密码正确或存款时为留密码，则系统计算利息并印出利息清单给储户。请用数据流图描绘本系统的功能。<br><img src="https://i.imgur.com/mGM8lOz.png" alt="test4-2"></p>
+<h3 id="可行性研究时的图"><a href="#可行性研究时的图" class="headerlink" title="可行性研究时的图"></a>可行性研究时的图</h3><h4 id="系统流程图"><a href="#系统流程图" class="headerlink" title="系统流程图"></a>系统流程图</h4><p>系统流程图时概括地描绘<strong>物理系统</strong>的传统工具，基本思想是用图形符号以黑盒子的形式描绘组成系统的每个部件（程序、文档、数据库、人工过程等）。系统流程图表达的是<strong>数据在系统各部件之间流动的情况，而不是对数据进行加工处理的控制过程</strong>，因此尽管系统流程图的某系符号和程序流程图的符号形式相同，但是它确是物理数据流图而不是程序流程图。</p>
+<h3 id="需求分析时的图"><a href="#需求分析时的图" class="headerlink" title="需求分析时的图"></a>需求分析时的图</h3><p>1.层次方框图（P68）：树形结构的的一系列多层次的矩形框描绘数据的层次结构，顶层单独的矩形框代表完整的数据结构，下面各层的矩形框代表数据的子集，最底层为不可再分割的元素。<br><img src="https://i.imgur.com/dsVhH8o.jpg" alt="层次方框图"><br>2.IPO图（P69）：描绘输入数据、对数据的处理和输出数据之间的关系。<br><img src="https://i.imgur.com/FpkrGZ8.jpg" alt="IPO"></p>
+<h3 id="总体设计时的图"><a href="#总体设计时的图" class="headerlink" title="总体设计时的图"></a>总体设计时的图</h3><h4 id="层次图"><a href="#层次图" class="headerlink" title="层次图"></a>层次图</h4><p>1.层次图（P102），描绘模型层次结构，矩形框代表一个模块，方框的连线代表调用关系而不像层次方框图那样表示组成关系。<br><strong><em>层次图很适合自顶向下设计软件的过程中使用</em></strong><br><img src="https://i.imgur.com/SMO0vih.jpg" alt="层次图"></p>
+<h4 id="hipo图"><a href="#HIPO图" class="headerlink" title="HIPO图"></a>HIPO图</h4><p>2.HIPO图（P103）：层次图加IPO，方框带上编号，每个方框对应一张IPO图描绘这个方框代表的模块的处理过程。<br><img src="https://i.imgur.com/BMCBI4h.jpg" alt="HIPO"></p>
+<h4 id="结构图sc图"><a href="#结构图（SC图）" class="headerlink" title="结构图（SC图）"></a>结构图（SC图）</h4><p>3.结构图（P103）：描绘软件结构，方框代表一个模块，框内注明模块的名字或主要功能；方框之间的箭头（或直线）表示模块之间的调用关系。<strong><em>箭头尾部是空心圆表示传递的是数据，尾部是实心圆表示传递的是控制信息。</em></strong><br><img src="https://i.imgur.com/25oHNfS.jpg" alt="结构图"></p>
+<h3 id="详细设计时的图"><a href="#详细设计时的图" class="headerlink" title="详细设计时的图"></a>详细设计时的图</h3><h4 id="程序流程图"><a href="#程序流程图" class="headerlink" title="程序流程图"></a>程序流程图</h4><h4 id="盒图ns图"><a href="#盒图（NS图）" class="headerlink" title="盒图（NS图）"></a>盒图（NS图）</h4><h4 id="pad图problem-analysis-diagram"><a href="#PAD图（Problem-Analysis-Diagram）" class="headerlink" title="PAD图（Problem Analysis Diagram）"></a>PAD图（Problem Analysis Diagram）</h4><h4 id="过程设计语言pdl"><a href="#过程设计语言（PDL）" class="headerlink" title="过程设计语言（PDL）"></a>过程设计语言（PDL）</h4><h2 id="umlunified-modeling-language"><a href="#UML（Unified-Modeling-Language）" class="headerlink" title="UML（Unified Modeling Language）"></a>UML（Unified Modeling Language）</h2><ul>
+<li><strong><em>功能模型</em></strong>：从用户的角度展示系统的功能，包括用例图</li>
+<li><strong><em>对象模型</em></strong>：采用对象，属性，操作，关联等概念展示系统的结构和基础，包括类图、对象图。</li>
+<li><strong><em>动态模型</em></strong>：展现系统的内部行为。包括序列图，活动图，状态图。</li>
 </ul>
-
+<p><strong><em>UML图，包括用例图、协作图、活动图、序列图、部署图、构件图、类图、对象图、状态图，是模型中信息的图形表达方式，但是UML模型独立于UML图存在。</em></strong></p>
+<h3 id="物理架构"><a href="#物理架构" class="headerlink" title="物理架构"></a>物理架构</h3><h4 id="构件图"><a href="#构件图" class="headerlink" title="构件图"></a>构件图</h4><h4 id="配置图"><a href="#配置图" class="headerlink" title="配置图"></a>配置图</h4><h3 id="逻辑架构"><a href="#逻辑架构" class="headerlink" title="逻辑架构"></a>逻辑架构</h3><h4 id="动态建模"><a href="#动态建模" class="headerlink" title="动态建模"></a>动态建模</h4><p>动态建模：用来展示系统的行为<br>1.时序图：描述对象的交互过程.以时间为参考(强调的是时间顺序).<br>      虚线：(生命线)表示对象的生命周期.<br>      实线：对象消息.<br>      虚线：返回消息.<br>          长方形：活动(激活).<br>          叉：对象消亡.<br>2.协作图：跟时序图一样,但强调对象的连接关系.<br>3.状态图：描述对象的自身的状态(一个对象的类型不同可能行为很古怪,行为变化很大).<br>4.活动图：(类似于流程图)描述一个环境中的交互顺序.</p>
+<h5 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h5><p>顺序图（sequence diagram） 描述对象间交互关系。<br>对象用矩形框表示，框内标对象名；<br>矩形框下的竖线代表对象的生命线；<br>对象生命线上的细长矩形框表示对象被激活；<br>对象间通信用对象间水平消息线表示，箭头形状表明消息类型（同步、异步或简单）。</p>
+<h5 id="协作图"><a href="#协作图" class="headerlink" title="协作图"></a>协作图</h5><p>协作图（Collaboration diagram） 描述相互协作对象间交互关系和链接关系。<br>顺序图着重表现交互时间顺序；<br>协作图着重表现交互对象的静态链接消息；<br>协作图显示对象间处理过程的分布</p>
+<h5 id="活动图"><a href="#活动图" class="headerlink" title="活动图"></a>活动图</h5><p>活动图（Activity diagram）描述为完成某一个用例需要做的活动以及这些活动的执行顺序。<br>活动图由状态图变化而来，各自用于不同目的。<br>状态图着重描述对象的状态变化以及触发状态变化的事件。<br>活动图着重描述各种活动的执行顺序。</p>
+<h5 id="状态图"><a href="#状态图" class="headerlink" title="状态图"></a>状态图</h5><p>状态图：也即状态转换图，通过描述系统的状态及引起系统状态转换的事件来表示系统的行为，还指明了作为特定时间的结果系统将做哪些动作（例如处理数据）。状态图既可以表示循环运行过程，也可以表示系统单程生命期。</p>
+<h4 id="静态建模"><a href="#静态建模" class="headerlink" title="静态建模"></a>静态建模</h4><p>静态建模：创建并建立一个系统的静态特征</p>
+<p>1.用例图：描述系统功能及功能的使用者.<br>2.类  图：表现系统里实体的关系,责任,类和类之间的关系，属性及方法.<br>3.对象图：当类图不能完全显示关系时用对象图.描述对象的属性,对象名,方法.<br>4.组件图：对类功能的封装,一个组件包含多个类.<br>      虚线：表示依赖关系.<br>5.部署图：描述系统中的物理结构.<br>      实线：表示连接</p>
+<h5 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h5><h5 id="对象图"><a href="#对象图" class="headerlink" title="对象图"></a>对象图</h5><h5 id="包图"><a href="#包图" class="headerlink" title="包图"></a>包图</h5>
         </div>
         
         
@@ -368,7 +198,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-28T15:20:28.000Z">2019-06-28</time>
+                <time class="level-item has-text-grey" datetime="2019-09-10T06:18:04.000Z">2019-09-10</time>
                 
                 
                 
@@ -377,68 +207,18 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/06/28/模拟退火算法/">模拟退火算法</a>
+                <a class="has-link-black-ter" href="/2019/09/10/最小生成树/">最小生成树</a>
             
         </h1>
         <div class="content">
-            <p><strong>P1337 [JSOI2004]平衡点 / 吊打XXX</strong><br><a href="https://www.luogu.org/problemnew/show/P1337" target="_blank" rel="noopener"><strong>洛谷题目传送门</strong></a><br><strong>跟着<a href="https://www.cnblogs.com/flashhu/category/1202079.html" target="_blank" rel="noopener">大佬的博客</a>学习。</strong><br><em>通常求最优解问题，贪心思路。</em><br>模拟退火降温的过程，徐徐降温，让物体慢慢收缩，形成结晶，达到内能最低的状态。期间粒子从活跃地运动到逐渐稳定。<br><strong>这种方法不一定能找到最优解，提高温度的上限能更大概率的找到最优解</strong><br>主要参数：</p>
-<ul>
-<li>温度：T</li>
-<li>降温系数：D（每次以固定的比率降温）</li>
-<li>温度下限：eps（到达温度下限就停止）</li>
-<li>当前解：tx（若出现更优的结果，当前解更新，或者在一定接受度的情况下接受波动后的解）</li>
-<li>最优解：当结果出现更优的情况时要更新最优解</li>
-<li>解的变动值：$\Delta$x(由当前温度T和一定的随机波动决定)</li>
-<li>结果：目标（当有更好的结果时更新）</li>
-<li>当前解的函数值与波动解的函数值之差：F（tx）-F（tx+$\Delta$x）</li>
-<li>接受度：<br>$e^{(-(F(X_{new})-F(X_{old}))/T)}$接受度&gt;(long double)rand()/RAND_MAX，就接受新的变动后的解。  </li>
-<li><em>RAND_MAX是c中的宏定义，结果是随机数的最大值，（2</em>rand（）-RAND_MAX）能得到[-RAND_MAX,RAND_MAX]范围内的全部结果。**</li>
-</ul>
-<p>调参过程比较麻烦，之后多练习之后再来补充经验。不过需要注意模拟退火一般不是正解。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-25T08:42:02.000Z">2019-06-25</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/25/数据结构复习/">数据结构复习</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="线性表的插入与删除"><a href="#线性表的插入与删除" class="headerlink" title="线性表的插入与删除"></a>线性表的插入与删除</h2><h2 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h2><ul>
-<li>长度，第一层的元素个数，空表长度为0，其它表长度为最大的那层括号中逗号数加一。  </li>
-<li>深度，转换成图形表示，相当于看二叉树深度，也可以看元素被多少层匹配的括号包裹，层数就等于对应深度。</li></ul>
+            <p><a href="http://codeforces.com/problemset/problem/1184/E1" target="_blank" rel="noopener">CF1184E1</a></p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/25/数据结构复习/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2019/09/10/最小生成树/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -454,6 +234,363 @@
 
 
 
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-10T04:13:40.000Z">2019-09-10</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/10/dp/">dp</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://codeforces.com/contest/1183/problem/H" target="_blank" rel="noopener">CF1183H</a></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/09/10/dp/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-08T13:47:35.000Z">2019-09-08</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/08/回文自动机PAM/">回文自动机PAM</a>
+            
+        </h1>
+        <div class="content">
+            <a id="more"></a>
+<p>模板<br>num[i]表示字符串第i个位置为止的后缀回文串中以第i个字母为结尾的回文串的个数；<br>cnt[i]表示本质不同回文串的个数，本质相同的回文串可能在字符串的多个位置出现。<br>cur 指向父亲回文串，当前回文串由父亲回文串拓展(+2)而来。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn = <span class="hljs-number">3e5</span> + <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Palindrome_Aut</span>&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> len[maxn],nx[maxn][<span class="hljs-number">26</span>],fail[maxn],cnt[maxn]; <span class="hljs-comment">//cnt 结点i表示的本质不同的串的个数,fail表示结点i失配后跳转不等于自身的结点i表示的回文串的最长后缀回文串 </span></span><br><span class="line">	<span class="hljs-keyword">int</span> last,cur,S[maxn],p,n;     <span class="hljs-comment">//p为新建结点的返回值，S存储插入的字符串，n为总的串长,last记录最后新建的节点的索引,cur指向当前回文串的父亲串 </span></span><br><span class="line">	<span class="hljs-keyword">int</span> num[maxn];       <span class="hljs-comment">//表示以节点i表示的最长回文串的最右端点为回文串结尾的回文串个数 </span></span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt;= <span class="hljs-number">25</span>;++i)nx[p][i] = <span class="hljs-number">0</span>;</span><br><span class="line">		cnt[p] = <span class="hljs-number">0</span>;</span><br><span class="line">		len[p] = l;</span><br><span class="line">		num[p] = <span class="hljs-number">0</span>; </span><br><span class="line">		<span class="hljs-keyword">return</span> p++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">		p = n = last = <span class="hljs-number">0</span>;</span><br><span class="line">		newnode(<span class="hljs-number">0</span>);</span><br><span class="line">		newnode(<span class="hljs-number">-1</span>);</span><br><span class="line">		S[<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>;           <span class="hljs-comment">//加入任意一个串不会出现的字符 </span></span><br><span class="line">		fail[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_fail</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>&#123;</span><br><span class="line"> 		<span class="hljs-keyword">while</span>(S[n-len[x] - <span class="hljs-number">1</span>]!=S[n])x = fail[x];</span><br><span class="line"> 		<span class="hljs-keyword">return</span> x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> c)</span></span>&#123;     <span class="hljs-comment">//插入字符</span></span><br><span class="line">		c -= <span class="hljs-string">'a'</span>; </span><br><span class="line">		S[++n] = c;</span><br><span class="line">		<span class="hljs-keyword">int</span> cur = get_fail(last);       <span class="hljs-comment">// </span></span><br><span class="line">		<span class="hljs-keyword">if</span>(!nx[cur][c])&#123;      </span><br><span class="line">			<span class="hljs-keyword">int</span> now = newnode(len[cur]+<span class="hljs-number">2</span>);</span><br><span class="line">			fail[now] = nx[get_fail(fail[cur])][c];</span><br><span class="line">			nx[cur][c] = now;</span><br><span class="line">			num[now] = num[fail[now]] + <span class="hljs-number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		last = nx[cur][c];</span><br><span class="line">		cnt[last] ++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">count</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = p<span class="hljs-number">-1</span>;i &gt;=<span class="hljs-number">0</span>;--i)&#123;       <span class="hljs-comment">//逆序累加，保证每个点都会比它的父亲结点先算完，于是父亲节点能算加到所有子孙 </span></span><br><span class="line">			cnt[fail[i]]+=cnt[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;run;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="hljs-literal">false</span>);</span><br><span class="line">	<span class="hljs-built_in">string</span> s;</span><br><span class="line">	<span class="hljs-built_in">cin</span> &gt;&gt; s;</span><br><span class="line">	run.init();</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;s.length();++i)run.add(s[i]);</span><br><span class="line">	run.count();</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>;i&lt;run.p;++i)<span class="hljs-built_in">cout</span> &lt;&lt; run.cnt[i];</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-26T11:11:11.000Z">2019-08-26</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/26/扩展kmp/">扩展kmp</a>
+            
+        </h1>
+        <div class="content">
+            <a id="more"></a>
+<h2 id="扩展kmp"><a href="#扩展kmp" class="headerlink" title="扩展kmp"></a>扩展kmp</h2><p>扩展kmp用来求解一个字符串的最长回文子串和最长重复子串。<br><a href="https://segmentfault.com/a/1190000008663857" target="_blank" rel="noopener">大佬讲得很详细,有图看起来也很清楚</a><br><del>在队友的帮助下，终于看懂了。</del><br>求解S串的每个后缀与T串的最长前缀匹配长度，需要用到T串每个后缀对T串的最长前缀匹配长度。由👆博客指出的规律，求$T$串的Next数组就相当于用一个与T串相同的$T’$串与T串扩展kmp，求解$T’$的extend就相当于T的Next数组。存储的是对任意前缀的非前缀子串与原串前缀匹配的最长后缀长度。</p>
+<h2 id="kmp"><a href="#kmp" class="headerlink" title="kmp"></a>kmp</h2><p>kmp 中的next数组存储的是以i结尾的非前缀子串与原串的前缀能够匹配的最长长度，匹配长度为$next[i],即子串$ $S[(i-(next[i]-1)),…,i]$  与子串 $S[1,…,next[i]]$匹配。 <strong><em>(下标从1开始)</em></strong><br>扩展kmp中的next[i]含义为：S[i]…S[n]与S的最长相同前缀长度，n为S串的长度，下标从1开始。存储对每一个后缀而言的最长前缀匹配长度。   </p>
+<h2 id="最小表示法"><a href="#最小表示法" class="headerlink" title="最小表示法"></a>最小表示法</h2><p>字符串首尾相连，找到一个位置，从该位置向后形成的字符串字典序最小。<br>模板：<br>定义i，j，k。<br>i，j为比较的两字符串的头，k为匹配长度</p>
+<pre><code class="c++"><span class="function"><span class="keyword">int</span> <span class="title">get_min</span><span class="params">(<span class="built_in">string</span> s)</span></span>{  <span class="comment">//返回下标</span>
+    <span class="keyword">int</span> len = s.length();
+    <span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">1</span>,k = <span class="number">0</span>,t;
+    <span class="keyword">while</span>(i&lt; len &amp;&amp; j &lt; len &amp;&amp; k &lt; len){
+        t = s[(i+k)%len]  - s[(j+k)%len];
+        <span class="keyword">if</span>(!t)k++; <span class="comment">//字符串相等，匹配长度加一 </span>
+        <span class="keyword">else</span>{
+            <span class="keyword">if</span>(t &gt; <span class="number">0</span>)i += k+<span class="number">1</span>; <span class="comment">//i串比j串更大，直接跳过之前匹配的相同的部分长度k </span>
+            <span class="keyword">else</span> j += k + <span class="number">1</span>; <span class="comment">//j串比i串字典序更大，直接跳过之前匹配的相同的部分长度k </span>
+            <span class="keyword">if</span>(i == j) j++; <span class="comment">// 将字符串起点设置在不同的地方 </span>
+            k = <span class="number">0</span>;
+        }
+    }
+    <span class="keyword">return</span> i &gt; j ? j : i;  
+}</code></pre>
+<p>模板题：<a href="https://vjudge.net/problem/POJ-1509" target="_blank" rel="noopener">POJ - 1509</a>  </p>
+<h2 id="z-function"><a href="#Z-function" class="headerlink" title="Z-function"></a>Z-function</h2><p>定义一个函数z()，z(i)是指由s[i]开始的字串，与s[0]开始的字串可以匹配到多长。也就是说 s[0…z(i)−1]=s[i…i+z(i)−1]。即存储从i开始的原串的后缀与原串的前缀的的最长前缀匹配长度</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-26T07:23:09.000Z">2019-08-26</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/26/Ac自动机/">Ac自动机</a>
+            
+        </h1>
+        <div class="content">
+            <a id="more"></a>
+<p>解决多模式串，一个文本串问题。<br>例如：多模式串中有多少种在文本串中出现<a href="https://www.luogu.org/problem/P3808" target="_blank" rel="noopener">P3808 【模板】AC自动机（简单版）</a><br>多模式串在文本串中出现最多的模式串及次数<a href="https://www.luogu.org/problem/P3796" target="_blank" rel="noopener">P3796 【模板】AC自动机（加强版）</a><br>多模式串中每个模式串在文本串中出现的次数+查询优化<a href="https://www.luogu.org/problem/P5357" target="_blank" rel="noopener">P5357 【模板】AC自动机（二次加强版）</a><br>我最开始学习使用的是kuangbin的模板，在模板的基础上修改就能过各种简单题。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-10T14:27:47.000Z">2019-08-10</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/10/排列组合问题/">排列组合问题</a>
+            
+        </h1>
+        <div class="content">
+            <p>感谢前人总结，学到了各种的解法<a href="https://blog.csdn.net/qwb492859377/article/details/50654627" target="_blank" rel="noopener"><br>排列组合 “n个球放入m个盒子m”问题 总结</a></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/08/10/排列组合问题/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-29T12:51:13.000Z">2019-07-29</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/29/初等数论/">初等数论</a>
+            
+        </h1>
+        <div class="content">
+            <a id="more"></a>
+<h3 id="威尔逊定理"><a href="#威尔逊定理" class="headerlink" title="威尔逊定理"></a>威尔逊定理</h3><p>判定一个自然数是否为素数的必要充分条件。<br>当且仅当$p$为素数时：$（p-1）!$ $\equiv-1$ ( mod $p$)。</p>
+<h3 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h3><p>若$p$是质数，对任意整数$a$,$a^p\equiv$ a( mod $p$)。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-22T16:04:25.000Z">2019-07-23</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/23/线性基/">线性基</a>
+            
+        </h1>
+        <div class="content">
+            <p>对于线性基的解释可以参看<a href="https://blog.csdn.net/a_forever_dream/article/details/83654397" target="_blank" rel="noopener">大佬的博客</a>，比较好理解，分析证明都比较好。</p>
+<h4 id="线性基一般可以处理序列异或和最大，最小和异或结果第k小问题等有关异或的问题。"><a href="#线性基一般可以处理序列异或和最大，最小和异或结果第k小问题等有关异或的问题。" class="headerlink" title="线性基一般可以处理序列异或和最大，最小和异或结果第k小问题等有关异或的问题。"></a>线性基一般可以处理序列异或和最大，最小和异或结果第k小问题等有关异或的问题。</h4>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/23/线性基/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-19T16:09:02.000Z">2019-07-20</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/20/递推/">递推</a>
+            
+        </h1>
+        <div class="content">
+            <a id="more"></a>
+<p>Yukina and ball<br>Description</p>
+<p>Yukina最近特别喜欢球。有一天他脑子抽了，从口袋里拿出了NN个不同的球，想把它们放到MM个相同的盒子里，并且要求每个盒子中至少要有一个球，他好奇有几种放法，于是尝试编程实现，但由于他天天不好好学习，只会上B站看游泳教练，于是他向你求助。</p>
+<p>Input</p>
+<p>多组数据，每行两个数N,M (1 \le N, M \le 20)N,M(1≤N,M≤20)。</p>
+<p>Output</p>
+<p>每组数据一行，表示方案数。</p>
+<p>Sample Input 1 </p>
+<p>4 2<br>1 1<br>Sample Output 1</p>
+<p>7
+1<br>题解：<br>设f[i][j]为前i个球放在前j个盒子里的方案数。<br>将前i-1个球放在j个盒子里，再把第i个球放在任意一个盒子里 $j<em>f[i-1][j]$<br>将前i-1个球放在j-1个盒子里，把i单独放在一个新盒子里  $f[i-1][j-1]$<br>递推式：$f[i][j] = j</em>f[i-1][j] + f[i-1][j-1]$<br>递推题老想不到，<del>自己太笨了</del>。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">上一页</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">下一页</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
+            
+        </ul>
+    </nav>
+</div>
 </div>
                 
 
@@ -497,7 +634,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        24
                     </p>
                 </div>
             </div>
@@ -592,8 +729,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-09T11:32:58.000Z">2019-07-09</time></div>
-                    <a href="/2019/07/09/并查集/" class="has-link-black-ter is-size-6">并查集</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T01:33:29.000Z">2020-01-08</time></div>
+                    <a href="/2020/01/08/软件工程/" class="has-link-black-ter is-size-6">软件工程</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -605,8 +742,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-04T07:08:59.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/FTP记住密码后的麻烦解决/" class="has-link-black-ter is-size-6">FTP记住密码后的麻烦解决</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T06:18:04.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/最小生成树/" class="has-link-black-ter is-size-6">最小生成树</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -618,8 +755,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-04T03:13:03.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/二分图/" class="has-link-black-ter is-size-6">二分图</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T04:13:40.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/dp/" class="has-link-black-ter is-size-6">dp</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -631,8 +768,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T03:00:50.000Z">2019-07-03</time></div>
-                    <a href="/2019/07/03/Ubuntu/" class="has-link-black-ter is-size-6">Ubuntu</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T13:47:35.000Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/回文自动机PAM/" class="has-link-black-ter is-size-6">回文自动机PAM</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -644,8 +781,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-02T15:45:17.000Z">2019-07-02</time></div>
-                    <a href="/2019/07/02/iracus主题个性化配置/" class="has-link-black-ter is-size-6">iracus主题个性化配置</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:11:11.000Z">2019-08-26</time></div>
+                    <a href="/2019/08/26/扩展kmp/" class="has-link-black-ter is-size-6">扩展kmp</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -666,12 +803,45 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/07/">
                 <span class="level-start">
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">15</span>
                 </span>
             </a>
         </li>
@@ -734,8 +904,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-09T11:32:58.000Z">2019-07-09</time></div>
-                    <a href="/2019/07/09/并查集/" class="has-link-black-ter is-size-6">并查集</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T01:33:29.000Z">2020-01-08</time></div>
+                    <a href="/2020/01/08/软件工程/" class="has-link-black-ter is-size-6">软件工程</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -747,8 +917,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-04T07:08:59.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/FTP记住密码后的麻烦解决/" class="has-link-black-ter is-size-6">FTP记住密码后的麻烦解决</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T06:18:04.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/最小生成树/" class="has-link-black-ter is-size-6">最小生成树</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -760,8 +930,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-04T03:13:03.000Z">2019-07-04</time></div>
-                    <a href="/2019/07/04/二分图/" class="has-link-black-ter is-size-6">二分图</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T04:13:40.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/dp/" class="has-link-black-ter is-size-6">dp</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -773,8 +943,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-03T03:00:50.000Z">2019-07-03</time></div>
-                    <a href="/2019/07/03/Ubuntu/" class="has-link-black-ter is-size-6">Ubuntu</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T13:47:35.000Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/回文自动机PAM/" class="has-link-black-ter is-size-6">回文自动机PAM</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -786,8 +956,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-02T15:45:17.000Z">2019-07-02</time></div>
-                    <a href="/2019/07/02/iracus主题个性化配置/" class="has-link-black-ter is-size-6">iracus主题个性化配置</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-26T11:11:11.000Z">2019-08-26</time></div>
+                    <a href="/2019/08/26/扩展kmp/" class="has-link-black-ter is-size-6">扩展kmp</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -808,12 +978,45 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/07/">
                 <span class="level-start">
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">15</span>
                 </span>
             </a>
         </li>
@@ -871,7 +1074,7 @@
                     
                     </a>
                     <p class="is-size-15">
-                    &copy; 2019 Peter_Pan_666&nbsp;
+                    &copy; 2020 Peter_Pan_666&nbsp;
                     <!-- Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                             href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> -->
                     

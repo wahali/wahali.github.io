@@ -1,5 +1,5 @@
-https://www.peterpan666.com/2019/07/09/并查集/
-https://www.peterpan666.com/2019/07/04/FTP记住密码后的麻烦解决/
-https://www.peterpan666.com/2019/07/04/二分图/
-https://www.peterpan666.com/2019/07/03/Ubuntu/
-https://www.peterpan666.com/2019/07/02/iracus主题个性化配置/
+https://www.peterpan666.com/2020/01/08/软件工程/
+https://www.peterpan666.com/2019/09/10/最小生成树/
+https://www.peterpan666.com/2019/09/10/dp/
+https://www.peterpan666.com/2019/09/08/回文自动机PAM/
+https://www.peterpan666.com/2019/08/26/扩展kmp/
