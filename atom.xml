@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.peterpan666.com/"/>
-  <updated>2020-03-24T09:24:06.711Z</updated>
+  <updated>2020-03-24T09:44:07.162Z</updated>
   <id>https://www.peterpan666.com/</id>
   
   <author>
@@ -17,32 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test32</title>
-    <link href="https://www.peterpan666.com/2020/03/24/test32/"/>
-    <id>https://www.peterpan666.com/2020/03/24/test32/</id>
-    <published>2020-03-24T09:24:06.000Z</published>
-    <updated>2020-03-24T09:24:06.711Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>test</title>
     <link href="https://www.peterpan666.com/2020/03/24/test/"/>
     <id>https://www.peterpan666.com/2020/03/24/test/</id>
-    <published>2020-03-24T09:17:09.000Z</published>
-    <updated>2020-03-24T09:17:09.431Z</updated>
+    <published>2020-03-24T09:44:07.000Z</published>
+    <updated>2020-03-24T09:44:07.162Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a>]]></content>
     
@@ -429,6 +408,27 @@
     
     
       <category term="算法" scheme="https://www.peterpan666.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FTP记住密码后的麻烦解决</title>
+    <link href="https://www.peterpan666.com/2019/07/04/FTP%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81%E5%90%8E%E7%9A%84%E9%BA%BB%E7%83%A6%E8%A7%A3%E5%86%B3/"/>
+    <id>https://www.peterpan666.com/2019/07/04/FTP记住密码后的麻烦解决/</id>
+    <published>2019-07-04T07:08:59.000Z</published>
+    <updated>2019-07-04T07:12:22.197Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载自我自己之前<a href="https://blog.csdn.net/qq_40655345/article/details/84146214" target="_blank" rel="noopener">CSDN的博客</a><br>在大一的时候我学校里计算机相关的老师会让我们在ftp服务器上下载作业，我才开始接触ftp服务器。在一次使用时点击了保存密码的选项，之后的登陆就变得很不愉快了。因为记住密码的原因，每次登陆ftp服务器，都会自动进入之前保存的那个用户，无法在同一个服务器上其他的账户上下载东西，也就是当时不知道如何切换到那个服务器上的其他账户。</p><p>在网上查阅了近2个小时的方法，才找到了能够解决这个问题的办法，也就是一个登陆ftp服务器的万用方法。</p><pre><code>ftp://用户名:密码@地址</code></pre><p>通过这个方式就可以在已保存密码的情况下，登陆其他的用户了。</p><p>希望能帮助到那些萌新小白新生，希望能让那些急于寻找解决办法的人，不要像我那样浪费了很多时间。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载自我自己之前&lt;a href=&quot;https://blog.csdn.net/qq_40655345/article/details/84146214&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;CSDN的博客&lt;/a&gt;&lt;br&gt;在大一的时候我学校里计算机相
+      
+    
+    </summary>
+    
     
   </entry>
   
